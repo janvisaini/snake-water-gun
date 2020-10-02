@@ -1,21 +1,14 @@
 import random 
 
-
-
 def user_input():
 
     inp=input("enter\n s - snake\n w -water \n g - gun\n") 
 
-    return(inp)
+    return(inp) 
 
-   
-
-  
+choice_list=["s","g","w"]
 
 def bot_choice():
-
-    choice_list=["s","g","w"]
-
     choice=random.choice(choice_list)
 
     return(choice)
@@ -90,12 +83,17 @@ n=0
 
 while n<10:
 
-    user=user_input() 
+    user=user_input()
+    while user_input not in choice_list:
+        user=user_input()
 
     res=result(user,bot_choice())
 
     n=n+1
 
-    
+print(f"""user win: {user_win} times\n
+Boy wins: {bot_win} times\n
+Tie : {tie} times """)
+
 
 print(res)
