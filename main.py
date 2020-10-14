@@ -58,7 +58,8 @@ n=0
 while n<10:
 
     user=user_input()
-    while user_input not in choice_list:
+    while user not in choice_list:
+        print("invalid input")
         user=user_input()
 
     res=result(user,bot_choice())
