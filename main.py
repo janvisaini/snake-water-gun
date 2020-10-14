@@ -2,7 +2,7 @@ import random
 
 def user_input():
 
-    inp=input("enter\n s - snake\n w -water \n g - gun\n") 
+    inp=input("enter\n s - snake\n w -water \n g - gun\n\n") 
 
     return(inp) 
 
@@ -16,11 +16,11 @@ def bot_choice():
 
 def BOTWIN(user,bot):
 	global bot_win
-	print(f"YOU : {user} \nBOT : {bot}\nBOT wins\n\n")
+	print(f"YOU : {user} \nBOT : {bot}\n               BOT wins\n\n")
 	bot_win+=1
 def USERWIN(user,bot):
 	global user_win
-	print(f"YOU : {user} \nBOT : {bot}\nYOU wins\n\n")
+	print(f"YOU : {user} \nBOT : {bot}\n               YOU wins\n\n")
 	user_win+=1	
 	
 user_win=0
@@ -49,7 +49,7 @@ def result(user, bot):
 		USERWIN(user,bot)
 	
 	elif user == bot:
-	    print(f"You chose {user} and bot chose {bot}\n match tie\n\n")
+	    print(f"YOU : {user}\nBOT :{bot}\n             match tie\n\n")
 	    global tie
 	    tie+=1
 
@@ -66,5 +66,5 @@ while n<10:
     n=n+1
 
 print(f"""user win: {user_win} times\n
-Boy wins: {bot_win} times\n
+Bot wins: {bot_win} times\n
 Tie : {tie} times """)
