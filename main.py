@@ -14,7 +14,15 @@ def bot_choice():
     return(choice)
 
 
-
+def BOTWIN(user,bot):
+	global bot_win
+	print(f"YOU : {user} \nBOT : {bot}\nBOT wins\n\n")
+	bot_win+=1
+def USERWIN(user,bot):
+	global user_win
+	print(f"YOU : {user} \nBOT : {bot}\nYOU wins\n\n")
+	user_win+=1	
+	
 user_win=0
 
 bot_win=0
