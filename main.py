@@ -2,7 +2,7 @@ import random
 
 def user_input():
 
-    inp=input("enter\n s - snake\n w -water \n g - gun\n") 
+    inp=input("enter\n s - snake\n w -water \n g - gun\n\n") 
 
     return(inp) 
 
@@ -14,77 +14,52 @@ def bot_choice():
     return(choice)
 
 
-
+def BOTWIN(user,bot):
+	global bot_win
+	print(f"YOU : {user} \nBOT : {bot}\n               BOT wins\n\n")
+	bot_win+=1
+def USERWIN(user,bot):
+	global user_win
+	print(f"YOU : {user} \nBOT : {bot}\n               YOU wins\n\n")
+	user_win+=1	
+	
 user_win=0
 
 bot_win=0
 
 tie=0
 
-  
-
 def result(user, bot):
+	if user == "s" and bot=="g":
+		BOTWIN(user,bot)       
+	
+	elif user == "g" and bot=="w":
+		BOTWIN(user,bot) 
 
-    
+	elif user == "w" and bot=="s":
+		BOTWIN(user,bot) 
 
-    global user_win
+	elif user == "g" and bot=="s":
+	          USERWIN(user,bot)
+	
+	elif user == "w" and bot=="g":
+		USERWIN(user,bot)
 
-    global bot_win
-
-    global tie
-
-    
-
-    if user == "s" and bot=="g":        
-
-        print(f"You chose {user} and bot chose {bot}\n bot wins")
-
-        bot_win+=1
-
-    elif user == "g" and bot=="w":         
-
-         print(f"You chose {user} and bot chose {bot}\n bot wins")
-
-         bot_win+=1 
-
-    elif user == "w" and bot=="s":
-
-         print(f"You chose {user} and bot chose {bot}\n bot wins")
-
-         bot_win+=1 
-
-    elif user == "g" and bot=="s":
-
-         print(f"You chose {user} and bot chose {bot}\n you wins")
-
-         user_win+=1 
-
-    elif user == "w" and bot=="g":
-
-        print(f"You chose {user} and bot chose {bot}\n you wins")
-
-        user_win+=1 
-
-    elif user == "s" and bot=="w":
-
-        print(f"You chose {user} and bot chose {bot}\n you wins")
-
-        user_win+=1
-
-    elif user == bot:
-
-        print(f"You chose {user} and bot chose {bot}\n match tie")
-
-        tie+=1
-
-    return(f"\n\n\nyou win: {user_win} times\n bot_win: {bot_win} times\ntie: {tie}times \n\n\n")
+	elif user == "s" and bot=="w":
+		USERWIN(user,bot)
+	
+	elif user == bot:
+	    print(f"YOU : {user}\nBOT :{bot}\n             match tie\n\n")
+	    global tie
+	    tie+=1
 
 n=0
 
 while n<10:
 
     user=user_input()
-    while user_input not in choice_list:
+    while user not in choice_list:
+        print("invalid input")
         user=user_input()
 
     res=result(user,bot_choice())
@@ -92,8 +67,5 @@ while n<10:
     n=n+1
 
 print(f"""user win: {user_win} times\n
-Boy wins: {bot_win} times\n
+Bot wins: {bot_win} times\n
 Tie : {tie} times """)
-
-
-print(res)
