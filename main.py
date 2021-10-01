@@ -1,62 +1,60 @@
 import random 
 
 def user_input():
+	# take input from user and return it
+    return input("enter\n s - snake\n w -water \n g - gun\n\n") 
 
-    inp=input("enter\n s - snake\n w -water \n g - gun\n\n") 
-
-    return(inp) 
-
+# list of choices that can be make
 choice_list=["s","g","w"]
 
+
 def bot_choice():
-    choice=random.choice(choice_list)
+	# return the bot's random choice
+    return random.choice(choice_list)
 
-    return(choice)
-
-
-def BOTWIN(user,bot):
+def botwin(user,bot):
+	# keep track of how many matches bot wins
 	global bot_win
 	print(f"YOU : {user} \nBOT : {bot}\n               BOT wins\n\n")
 	bot_win+=1
-def USERWIN(user,bot):
+
+def userwin(user,bot):
+	# keep track of how many matches you wins
 	global user_win
 	print(f"YOU : {user} \nBOT : {bot}\n               YOU wins\n\n")
 	user_win+=1	
-	
+
+# defining necssary variables
 user_win=0
-
 bot_win=0
-
 tie=0
 
 def result(user, bot):
+	# rules implementaion for game
 	if user == "s" and bot=="g":
-		BOTWIN(user,bot)       
+		botwin(user,bot)       
 	
 	elif user == "g" and bot=="w":
-		BOTWIN(user,bot) 
+		botwin(user,bot) 
 
 	elif user == "w" and bot=="s":
-		BOTWIN(user,bot) 
+		botwin(user,bot) 
 
 	elif user == "g" and bot=="s":
-	          USERWIN(user,bot)
+	    userwin(user,bot)
 	
 	elif user == "w" and bot=="g":
-		USERWIN(user,bot)
+		userwin(user,bot)
 
 	elif user == "s" and bot=="w":
-		USERWIN(user,bot)
+		userwin(user,bot)
 	
 	elif user == bot:
 	    print(f"YOU : {user}\nBOT :{bot}\n             match tie\n\n")
 	    global tie
 	    tie+=1
 
-n=0
-
-while n<10:
-
+for i in range(11):
     user=user_input()
     while user not in choice_list:
         print("invalid input")
@@ -64,8 +62,8 @@ while n<10:
 
     res=result(user,bot_choice())
 
-    n=n+1
 
+# printing the summary of series
 print(f"""user win: {user_win} times\n
 Bot wins: {bot_win} times\n
 Tie : {tie} times """)
