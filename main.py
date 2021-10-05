@@ -55,13 +55,14 @@ def result(user, bot):
 	    tie+=1
 
 for i in range(11):
+# 	taking user input
     user=user_input()
+# 	checking for valid input 
     while user not in choice_list:
         print("invalid input")
         user=user_input()
-
+#   getting results
     res=result(user,bot_choice())
-
 
 # printing the summary of series
 print(f"""user win: {user_win} times\n
